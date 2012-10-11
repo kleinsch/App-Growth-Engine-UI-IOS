@@ -1,0 +1,4 @@
+
+@interface HKInviteViewCell : UITableViewCell
+
+@end

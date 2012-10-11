@@ -11,59 +11,54 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-
+@synthesize infoLabel = _infoLabel;
 - (void)dealloc
 {
+    [_infoLabel release];
     [_window release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
+    
+    // create a share button
+    UIButton *demoBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [demoBtn setTitle:@"Share App" forState:UIControlStateNormal];
+    demoBtn.frame = CGRectMake(100, 220, 120, 44);
+    [demoBtn addTarget:self action:@selector(showListView) forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:demoBtn];
+    
+    // create a text label to show status returned from invitation
+    _infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, 320, 30)];
+    _infoLabel.textAlignment = UITextAlignmentCenter;
+    [self.window addSubview:_infoLabel];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
+- (void)showListView
 {
-    /*
-     Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-     Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-     */
+    HKInviteView *inviteView = [[HKInviteView alloc] initWithKey:@"b9ef3007-c9a9-459d-977a-a62125cf6b1e"
+                                                           title:@"Suggested Contacts" 
+                                                    sendBtnLabel:@"Invite"];
+    inviteView.delegate = self;
+    [inviteView showInView:self.window animated:YES];
+    [inviteView release];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+#pragma mark - HKInvite delegates
+- (void)invitedCount:(NSInteger)count;
 {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     */
+    _infoLabel.text = [NSString stringWithFormat:@"You have shared this app with %d friends", count];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
+- (void)inviteCancelled
 {
-    /*
-     Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-     */
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
-     */
+    _infoLabel.text = @"You have cancelled from sharing";
 }
 
 @end
