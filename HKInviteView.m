@@ -1,4 +1,4 @@
-
+#import <AddressBook/AddressBook.h>
 #import "HKInviteView.h"
 #import "HKInviteViewCell.h"
 #import "HKMDiscoverer.h"
@@ -24,7 +24,7 @@
 #pragma mark - initialization & cleaning up
 - (id)initWithKey:(NSString *)apiKey
             title:(NSString *)aTitle 
-       sendBtnLabel:(NSString *)sendBtnLabel 
+     sendBtnLabel:(NSString *)sendBtnLabel 
 {
     NSLog(@"initWithKey invoked %@", self);
     CGRect rect = [[UIScreen mainScreen] applicationFrame];
@@ -38,8 +38,9 @@
         _firstUse = [[HKMDiscoverer agent]installCode] == nil;
         
         // start discovering address book
-        [MBProgressHUD showHUDAddedTo:self animated:YES];
-        [[HKMDiscoverer agent] discover:0];
+        //        [MBProgressHUD showHUDAddedTo:self animated:YES];
+        //        [[HKMDiscoverer agent] discover:0];
+        [self launchWithPermissionCheck];
         
         float tableViewWidth = rect.size.width - 2 * POPLISTVIEW_SCREENINSET;
         float tableViewHeight = rect.size.height - 2 * POPLISTVIEW_SCREENINSET - POPLISTVIEW_HEADER_HEIGHT - POPLISTVIEW_FOOTER_HEIGHT- RADIUS;
@@ -56,7 +57,7 @@
         // add pulldown refresh control
         ODRefreshControl *refreshControl = [[[ODRefreshControl alloc] initInScrollView:_tableView] autorelease];
         [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
-
+        
         [self addSubview:_tableView];
         
         // add invite button
@@ -64,14 +65,44 @@
         float buttonHeight = POPLISTVIEW_FOOTER_HEIGHT-POPLISTVIEW_BUTTONINSET*2;
         _sendButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_sendButton addTarget:self 
-                   action:@selector(sendInviteAction)
-         forControlEvents:UIControlEventTouchUpInside];
+                        action:@selector(sendInviteAction)
+              forControlEvents:UIControlEventTouchUpInside];
         [_sendButton setTitle:[sendBtnLabel copy] forState:UIControlStateNormal];
         _sendButton.frame = CGRectMake(POPLISTVIEW_SCREENINSET+POPLISTVIEW_BUTTONINSET, POPLISTVIEW_SCREENINSET + POPLISTVIEW_HEADER_HEIGHT + tableViewHeight + POPLISTVIEW_BUTTONINSET, buttonWidth, buttonHeight);
         [self addSubview:_sendButton];
     }
     return self;    
 }
+
+- (void) launchWithPermissionCheck
+{
+    ABAddressBookRef ab = ABAddressBookCreate();
+    if (ABAddressBookRequestAccessWithCompletion != NULL) {
+        ABAddressBookRequestAccessWithCompletion(ab, ^(bool granted, CFErrorRef error) {
+            if (granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD showHUDAddedTo:self animated:YES];
+                    [[HKMDiscoverer agent] discover:0];
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView* alert = [[UIAlertView alloc] init];
+                    alert.title = ADDRESSBOOK_DENIED_ACCESS_ALERT_TITLE;
+                    alert.message = ADDRESSBOOK_DENIED_ACCESS_ALERT_MSG;
+                    [alert addButtonWithTitle:@"Dismiss"];
+                    alert.cancelButtonIndex = 0;
+                    [alert show];
+                    [alert release];
+                });
+            }
+        });
+    } else {
+        // iOS 5
+        [MBProgressHUD showHUDAddedTo:self animated:YES];
+        [[HKMDiscoverer agent] discover:0];
+    }
+}
+
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
@@ -111,10 +142,10 @@
     
     if (_firstUse) {
         _aTimer = [NSTimer scheduledTimerWithTimeInterval:FIRST_USE_WAIT_TIME
-                                                  target:self 
-                                                selector:@selector(timerFired:) 
-                                                userInfo:nil 
-                                                 repeats:NO];
+                                                   target:self 
+                                                 selector:@selector(timerFired:) 
+                                                 userInfo:nil 
+                                                  repeats:NO];
     } else {
         [[HKMDiscoverer agent] queryLeads];
     }
@@ -171,13 +202,13 @@
     [MBProgressHUD hideHUDForView:self animated:YES];
     
     UIAlertView* alert = [[UIAlertView alloc] init];
-	alert.title = @"Error";
-	alert.message = @"No data coverage. Please check your settings";
-	[alert addButtonWithTitle:@"Dismiss"];
-	alert.cancelButtonIndex = 0;
-	[alert show];
-	[alert release];
- 
+    alert.title = @"Error";
+    alert.message = @"No data coverage. Please check your settings";
+    [alert addButtonWithTitle:@"Dismiss"];
+    alert.cancelButtonIndex = 0;
+    [alert show];
+    [alert release];
+    
     [self fadeOut];
 }
 
@@ -190,7 +221,7 @@
         self.alpha = 1;
         self.transform = CGAffineTransformMakeScale(1, 1);
     }];
-
+    
 }
 - (void)fadeOut
 {
@@ -271,7 +302,7 @@
     
     // dismiss self
     [self fadeOut];
-
+    
 }
 
 #pragma mark - DrawDrawDraw
@@ -295,13 +326,13 @@
     float width = bgRect.size.width;
     float height = bgRect.size.height;
     CGMutablePathRef path = CGPathCreateMutable();
-	CGPathMoveToPoint(path, NULL, x, y + RADIUS);
-	CGPathAddArcToPoint(path, NULL, x, y, x + RADIUS, y, RADIUS);
-	CGPathAddArcToPoint(path, NULL, x + width, y, x + width, y + RADIUS, RADIUS);
-	CGPathAddArcToPoint(path, NULL, x + width, y + height, x + width - RADIUS, y + height, RADIUS);
-	CGPathAddArcToPoint(path, NULL, x, y + height, x, y + height - RADIUS, RADIUS);
-	CGPathCloseSubpath(path);
-	CGContextAddPath(ctx, path);
+    CGPathMoveToPoint(path, NULL, x, y + RADIUS);
+    CGPathAddArcToPoint(path, NULL, x, y, x + RADIUS, y, RADIUS);
+    CGPathAddArcToPoint(path, NULL, x + width, y, x + width, y + RADIUS, RADIUS);
+    CGPathAddArcToPoint(path, NULL, x + width, y + height, x + width - RADIUS, y + height, RADIUS);
+    CGPathAddArcToPoint(path, NULL, x, y + height, x, y + height - RADIUS, RADIUS);
+    CGPathCloseSubpath(path);
+    CGContextAddPath(ctx, path);
     CGContextFillPath(ctx);
     CGPathRelease(path);
     
@@ -333,7 +364,7 @@
             [MBProgressHUD hideHUDForView:self animated:YES];
         });
     }
-
+    
     
 }
 
