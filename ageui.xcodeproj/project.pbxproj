@@ -13,6 +13,24 @@
 		1F008C1D16274710006BFCF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F008C1B16274710006BFCF1 /* InfoPlist.strings */; };
 		1F008C1F16274710006BFCF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C1E16274710006BFCF1 /* main.m */; };
 		1F008C2316274710006BFCF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2216274710006BFCF1 /* AppDelegate.m */; };
+		1F008C4816274751006BFCF1 /* HKInviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2A16274751006BFCF1 /* HKInviteView.m */; };
+		1F008C4916274751006BFCF1 /* HKInviteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2C16274751006BFCF1 /* HKInviteViewCell.m */; };
+		1F008C4A16274751006BFCF1 /* HKMDiscoverer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2E16274751006BFCF1 /* HKMDiscoverer.m */; };
+		1F008C4B16274751006BFCF1 /* HKMLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3116274751006BFCF1 /* HKMLead.m */; };
+		1F008C4C16274751006BFCF1 /* HKMOpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3316274751006BFCF1 /* HKMOpenUDID.m */; };
+		1F008C4D16274751006BFCF1 /* HKMReferralRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3516274751006BFCF1 /* HKMReferralRecord.m */; };
+		1F008C4E16274751006BFCF1 /* HKMSBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3716274751006BFCF1 /* HKMSBJSON.m */; };
+		1F008C4F16274751006BFCF1 /* HKMSBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3916274751006BFCF1 /* HKMSBJsonBase.m */; };
+		1F008C5016274751006BFCF1 /* HKMSBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3B16274751006BFCF1 /* HKMSBJsonParser.m */; };
+		1F008C5116274751006BFCF1 /* HKMSBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3D16274751006BFCF1 /* HKMSBJsonWriter.m */; };
+		1F008C5216274751006BFCF1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3F16274751006BFCF1 /* MBProgressHUD.m */; };
+		1F008C5316274751006BFCF1 /* NSObject+HKMSBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4116274751006BFCF1 /* NSObject+HKMSBJSON.m */; };
+		1F008C5416274751006BFCF1 /* NSString+HKMSBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4316274751006BFCF1 /* NSString+HKMSBJSON.m */; };
+		1F008C5516274751006BFCF1 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4516274751006BFCF1 /* ODRefreshControl.m */; };
+		1F008C5616274751006BFCF1 /* UIDevice-HKMHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4716274751006BFCF1 /* UIDevice-HKMHardware.m */; };
+		1F008C591627479F006BFCF1 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C581627479F006BFCF1 /* AddressBook.framework */; };
+		1F008C5B162747AF006BFCF1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C5A162747AF006BFCF1 /* MessageUI.framework */; };
+		1F008C5D162747CD006BFCF1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C5C162747CD006BFCF1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +38,46 @@
 		1F008C1216274710006BFCF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F008C1416274710006BFCF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1F008C1616274710006BFCF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1F008C1A16274710006BFCF1 /* ageui-Info.plist */ = {isa = PBXFileReference; path = "ageui-Info.plist"; sourceTree = "<group>"; };
+		1F008C1A16274710006BFCF1 /* ageui-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ageui-Info.plist"; sourceTree = "<group>"; };
 		1F008C1C16274710006BFCF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F008C1E16274710006BFCF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F008C2016274710006BFCF1 /* ageui-Prefix.pch */ = {isa = PBXFileReference; path = "ageui-Prefix.pch"; sourceTree = "<group>"; };
-		1F008C2116274710006BFCF1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		1F008C2016274710006BFCF1 /* ageui-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ageui-Prefix.pch"; sourceTree = "<group>"; };
+		1F008C2116274710006BFCF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1F008C2216274710006BFCF1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1F008C2916274751006BFCF1 /* HKInviteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKInviteView.h; sourceTree = "<group>"; };
+		1F008C2A16274751006BFCF1 /* HKInviteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKInviteView.m; sourceTree = "<group>"; };
+		1F008C2B16274751006BFCF1 /* HKInviteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKInviteViewCell.h; sourceTree = "<group>"; };
+		1F008C2C16274751006BFCF1 /* HKInviteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKInviteViewCell.m; sourceTree = "<group>"; };
+		1F008C2D16274751006BFCF1 /* HKMDiscoverer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMDiscoverer.h; sourceTree = "<group>"; };
+		1F008C2E16274751006BFCF1 /* HKMDiscoverer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMDiscoverer.m; sourceTree = "<group>"; };
+		1F008C2F16274751006BFCF1 /* HKMJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMJSON.h; sourceTree = "<group>"; };
+		1F008C3016274751006BFCF1 /* HKMLead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMLead.h; sourceTree = "<group>"; };
+		1F008C3116274751006BFCF1 /* HKMLead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMLead.m; sourceTree = "<group>"; };
+		1F008C3216274751006BFCF1 /* HKMOpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMOpenUDID.h; sourceTree = "<group>"; };
+		1F008C3316274751006BFCF1 /* HKMOpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMOpenUDID.m; sourceTree = "<group>"; };
+		1F008C3416274751006BFCF1 /* HKMReferralRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMReferralRecord.h; sourceTree = "<group>"; };
+		1F008C3516274751006BFCF1 /* HKMReferralRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMReferralRecord.m; sourceTree = "<group>"; };
+		1F008C3616274751006BFCF1 /* HKMSBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMSBJSON.h; sourceTree = "<group>"; };
+		1F008C3716274751006BFCF1 /* HKMSBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMSBJSON.m; sourceTree = "<group>"; };
+		1F008C3816274751006BFCF1 /* HKMSBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMSBJsonBase.h; sourceTree = "<group>"; };
+		1F008C3916274751006BFCF1 /* HKMSBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMSBJsonBase.m; sourceTree = "<group>"; };
+		1F008C3A16274751006BFCF1 /* HKMSBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMSBJsonParser.h; sourceTree = "<group>"; };
+		1F008C3B16274751006BFCF1 /* HKMSBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMSBJsonParser.m; sourceTree = "<group>"; };
+		1F008C3C16274751006BFCF1 /* HKMSBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMSBJsonWriter.h; sourceTree = "<group>"; };
+		1F008C3D16274751006BFCF1 /* HKMSBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMSBJsonWriter.m; sourceTree = "<group>"; };
+		1F008C3E16274751006BFCF1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		1F008C3F16274751006BFCF1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		1F008C4016274751006BFCF1 /* NSObject+HKMSBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HKMSBJSON.h"; sourceTree = "<group>"; };
+		1F008C4116274751006BFCF1 /* NSObject+HKMSBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HKMSBJSON.m"; sourceTree = "<group>"; };
+		1F008C4216274751006BFCF1 /* NSString+HKMSBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HKMSBJSON.h"; sourceTree = "<group>"; };
+		1F008C4316274751006BFCF1 /* NSString+HKMSBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HKMSBJSON.m"; sourceTree = "<group>"; };
+		1F008C4416274751006BFCF1 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
+		1F008C4516274751006BFCF1 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
+		1F008C4616274751006BFCF1 /* UIDevice-HKMHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-HKMHardware.h"; sourceTree = "<group>"; };
+		1F008C4716274751006BFCF1 /* UIDevice-HKMHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-HKMHardware.m"; sourceTree = "<group>"; };
+		1F008C581627479F006BFCF1 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		1F008C5A162747AF006BFCF1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1F008C5C162747CD006BFCF1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F008C5D162747CD006BFCF1 /* QuartzCore.framework in Frameworks */,
+				1F008C5B162747AF006BFCF1 /* MessageUI.framework in Frameworks */,
+				1F008C591627479F006BFCF1 /* AddressBook.framework in Frameworks */,
 				1F008C1316274710006BFCF1 /* UIKit.framework in Frameworks */,
 				1F008C1516274710006BFCF1 /* Foundation.framework in Frameworks */,
 				1F008C1716274710006BFCF1 /* CoreGraphics.framework in Frameworks */,
@@ -46,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1F008C1816274710006BFCF1 /* ageui */,
+				1F008C571627476A006BFCF1 /* AGE SDK */,
 				1F008C1116274710006BFCF1 /* Frameworks */,
 				1F008C0F16274710006BFCF1 /* Products */,
 			);
@@ -62,6 +118,9 @@
 		1F008C1116274710006BFCF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F008C5C162747CD006BFCF1 /* QuartzCore.framework */,
+				1F008C5A162747AF006BFCF1 /* MessageUI.framework */,
+				1F008C581627479F006BFCF1 /* AddressBook.framework */,
 				1F008C1216274710006BFCF1 /* UIKit.framework */,
 				1F008C1416274710006BFCF1 /* Foundation.framework */,
 				1F008C1616274710006BFCF1 /* CoreGraphics.framework */,
@@ -88,6 +147,44 @@
 				1F008C2016274710006BFCF1 /* ageui-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F008C571627476A006BFCF1 /* AGE SDK */ = {
+			isa = PBXGroup;
+			children = (
+				1F008C2916274751006BFCF1 /* HKInviteView.h */,
+				1F008C2A16274751006BFCF1 /* HKInviteView.m */,
+				1F008C2B16274751006BFCF1 /* HKInviteViewCell.h */,
+				1F008C2C16274751006BFCF1 /* HKInviteViewCell.m */,
+				1F008C2D16274751006BFCF1 /* HKMDiscoverer.h */,
+				1F008C2E16274751006BFCF1 /* HKMDiscoverer.m */,
+				1F008C2F16274751006BFCF1 /* HKMJSON.h */,
+				1F008C3016274751006BFCF1 /* HKMLead.h */,
+				1F008C3116274751006BFCF1 /* HKMLead.m */,
+				1F008C3216274751006BFCF1 /* HKMOpenUDID.h */,
+				1F008C3316274751006BFCF1 /* HKMOpenUDID.m */,
+				1F008C3416274751006BFCF1 /* HKMReferralRecord.h */,
+				1F008C3516274751006BFCF1 /* HKMReferralRecord.m */,
+				1F008C3616274751006BFCF1 /* HKMSBJSON.h */,
+				1F008C3716274751006BFCF1 /* HKMSBJSON.m */,
+				1F008C3816274751006BFCF1 /* HKMSBJsonBase.h */,
+				1F008C3916274751006BFCF1 /* HKMSBJsonBase.m */,
+				1F008C3A16274751006BFCF1 /* HKMSBJsonParser.h */,
+				1F008C3B16274751006BFCF1 /* HKMSBJsonParser.m */,
+				1F008C3C16274751006BFCF1 /* HKMSBJsonWriter.h */,
+				1F008C3D16274751006BFCF1 /* HKMSBJsonWriter.m */,
+				1F008C3E16274751006BFCF1 /* MBProgressHUD.h */,
+				1F008C3F16274751006BFCF1 /* MBProgressHUD.m */,
+				1F008C4016274751006BFCF1 /* NSObject+HKMSBJSON.h */,
+				1F008C4116274751006BFCF1 /* NSObject+HKMSBJSON.m */,
+				1F008C4216274751006BFCF1 /* NSString+HKMSBJSON.h */,
+				1F008C4316274751006BFCF1 /* NSString+HKMSBJSON.m */,
+				1F008C4416274751006BFCF1 /* ODRefreshControl.h */,
+				1F008C4516274751006BFCF1 /* ODRefreshControl.m */,
+				1F008C4616274751006BFCF1 /* UIDevice-HKMHardware.h */,
+				1F008C4716274751006BFCF1 /* UIDevice-HKMHardware.m */,
+			);
+			name = "AGE SDK";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +250,21 @@
 			files = (
 				1F008C1F16274710006BFCF1 /* main.m in Sources */,
 				1F008C2316274710006BFCF1 /* AppDelegate.m in Sources */,
+				1F008C4816274751006BFCF1 /* HKInviteView.m in Sources */,
+				1F008C4916274751006BFCF1 /* HKInviteViewCell.m in Sources */,
+				1F008C4A16274751006BFCF1 /* HKMDiscoverer.m in Sources */,
+				1F008C4B16274751006BFCF1 /* HKMLead.m in Sources */,
+				1F008C4C16274751006BFCF1 /* HKMOpenUDID.m in Sources */,
+				1F008C4D16274751006BFCF1 /* HKMReferralRecord.m in Sources */,
+				1F008C4E16274751006BFCF1 /* HKMSBJSON.m in Sources */,
+				1F008C4F16274751006BFCF1 /* HKMSBJsonBase.m in Sources */,
+				1F008C5016274751006BFCF1 /* HKMSBJsonParser.m in Sources */,
+				1F008C5116274751006BFCF1 /* HKMSBJsonWriter.m in Sources */,
+				1F008C5216274751006BFCF1 /* MBProgressHUD.m in Sources */,
+				1F008C5316274751006BFCF1 /* NSObject+HKMSBJSON.m in Sources */,
+				1F008C5416274751006BFCF1 /* NSString+HKMSBJSON.m in Sources */,
+				1F008C5516274751006BFCF1 /* ODRefreshControl.m in Sources */,
+				1F008C5616274751006BFCF1 /* UIDevice-HKMHardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
