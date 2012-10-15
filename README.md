@@ -68,3 +68,5 @@ You may customize the look and feel of the AGE Invitation UI specifically for yo
 * Dimension of AGE Invitation UI - You can change the value of <code>#define POPLISTVIEW_SCREENINSET</code> constant defined in <code>HKInviteView.m</code> 
 * Default contact image - You can replace the default image contact.png with another image you provide.
 
+We understand that you may want a look and feel that is completely different from what AGE Invitation offers.  You can still take advantage of AGE invitation API by integrating with <a href="https://github.com/hookmobile/App-Growth-Engine-iOS-SDK" target="_blank">AGE SDK</a>.  
+
