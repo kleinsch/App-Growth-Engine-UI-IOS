@@ -62,3 +62,9 @@ Below sample code snippet illustrates implementation of the delegate protocol by
 }
 </code></pre>
 
+#UI Customization
+You may customize the look and feel of the AGE Invitation UI specifically for your app.  There are few things you can easily tweak with minimal effort:
+
+* Dimension of AGE Invitation UI - You can change the value of <code>#define POPLISTVIEW_SCREENINSET</code> constant defined in <code>HKInviteView.m</code> 
+* Default contact image - You can replace the default image contact.png with another image you provide.
+
