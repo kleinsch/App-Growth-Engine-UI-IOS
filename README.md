@@ -23,6 +23,10 @@ The message is completely customizable by you, and it can be further personalize
 # Integration Setup
 Now that you have a good understanding of the AGE Invitation UI, you are proceed and integrate it into your app.  The first step is to copy all the necessary files into your Xcode project.  AGE Invitation UI requires linking with following system libraries:
 
+* asdf
+* asdfs
+* asdfss
+
 <li>AddressBook.Framework</li>
 <li>MessageUI.Framework</li>
 <li>QuartzCore.Framework</li>
