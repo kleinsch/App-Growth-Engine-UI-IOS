@@ -1,6 +1,6 @@
 # Introduction
 
-AGE Invitation UI is a drop-in IOS controls that you can deploy to your app within minutes.  AGE Invitation UI will help your users identify and share your app with friends & associates having compatible mobile devices and highest LTV.  For complete feature set and how it works, please visit <a href="http://www.hookmobile.com">Hook Mobile</a>.
+AGE Invitation UI is a drop-in IOS controls that you can deploy to your app within minutes.  AGE Invitation UI will help your users identify and share your app with friends & associates having compatible mobile devices and highest LTV.  For complete feature set and how it works, please visit <a href="http://www.hookmobile.com"  target="_blank">Hook Mobile</a>.
 
 # Integration Point
 
@@ -29,8 +29,8 @@ Now that you have a good understanding of the AGE Invitation UI, you are proceed
 
 AGE Invitation UI depends on following third party open-source libraries.  Source codes for these libraries are included in this project.
 
-* MBProgressHUD
-* ODRefreshControl
-* OpenUDID
-* SBJson
+* <a href="https://github.com/jdg/MBProgressHUD" target="_blank">MBProgressHUD</a>
+* <a href="https://github.com/Sephiroth87/ODRefreshControl" target="_blank">ODRefreshControl</a>
+* <a href="https://github.com/ylechelle/OpenUDID" target="_blank">OpenUDID</a>
+* <a href="https://github.com/groopd/SBJSON-library" target="_blank">SBJson</a>
 
