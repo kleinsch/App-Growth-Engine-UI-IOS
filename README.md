@@ -36,7 +36,7 @@ AGE Invitation UI should literally take minutes to integrate because there is on
 
 The following sample code snipet demonstrate launching AGE Invitation UI:
 
-<code>- (void)showListView
+<pre><code>- (void)showListView
 {
     HKInviteView *inviteView = [[HKInviteView alloc] initWithKey:@"b9ef3007-c9a9-459d-977a-a62125cf6b1e"
                                                      title:@"Suggested Contacts" 
@@ -44,4 +44,4 @@ The following sample code snipet demonstrate launching AGE Invitation UI:
     inviteView.delegate = self;
     [inviteView showInView:self.window animated:YES];
     [inviteView release];
-}</code>
+}</code></pre>
