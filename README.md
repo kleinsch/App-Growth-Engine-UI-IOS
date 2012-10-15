@@ -20,5 +20,15 @@ Select one or more entries from the suggested and click on the <b>Send</b> butto
 
 The message is completely customizable by you, and it can be further personalized to include the sender and app name.
 
-# Integration Preparation
-First step is to copy all the necessary files into your Xcode project.  
+# Integration Setup
+Now that you have a good understanding of the AGE Invitation UI, you are proceed and integrate it into your app.  The first step is to copy all the necessary files into your Xcode project.  AGE Invitation UI requires linking with following system libraries:
+
+<li>AddressBook.Framework</li>
+<li>MessageUI.Framework</li>
+<li>QuartzCore.Framework</li>
+
+AGE Invitation UI depends on following third party open-source libraries.  Source codes for these libraries are included in this project.
+
+<li>MBProgressHUD</li>
+<li>ODRefreshControl</li>
+<li>OpenUDID</li>
