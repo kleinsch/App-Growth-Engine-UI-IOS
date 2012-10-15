@@ -12,7 +12,13 @@ A sample app is included with this project that demonstrate AGE Invitation UI la
 [![](https://dl.dropbox.com/s/izxzj9qxrgl2axd/AGEUI1.PNG)](https://www.dropbox.com/s/izxzj9qxrgl2axd/AGEUI1.PNG)
 [![](https://dl.dropbox.com/s/pm1uzrjn1p1dk9v/AGEUI2.PNG)](https://www.dropbox.com/s/pm1uzrjn1p1dk9v/AGEUI2.PNG)
 
+When AGE Invitation UI is invoked for first time, it will analyze the address book.  It may take a few seconds before the list of suggested contacts is displayed.  You may use swipe-pull gesture to force a refresh of the list.  The list of contacts shown in the list is filtered by criteria you define for your app profile in our developer portal.  
 
+Select one or more entries from the suggested and click on the <b>Send</b> button to fire off the invitation text message.  The recipient(s) of the invitation will receive a personalized text message on their phone:
+
+[![](https://dl.dropbox.com/s/zg3qbf5ac8om7cg/inviteSms.PNG)](https://dl.dropbox.com/s/zg3qbf5ac8om7cg/inviteSms.PNG)
+
+The message is completely customizable by you, and it can be further personalized to include the sender and app name.
 
 # Integration Preparation
 First step is to copy all the necessary files into your Xcode project.  
