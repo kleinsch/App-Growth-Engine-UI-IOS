@@ -38,10 +38,27 @@ The following sample code snipet demonstrate launching AGE Invitation UI:
 
 <pre><code>- (void)showListView
 {
-    HKInviteView *inviteView = [[HKInviteView alloc] initWithKey:@"b9ef3007-c9a9-459d-977a-a62125cf6b1e"
+    HKInviteView *inviteView = [[HKInviteView alloc] initWithKey:@"Your-App-Key"
                                                      title:@"Suggested Contacts" 
                                               sendBtnLabel:@"Invite"];
     inviteView.delegate = self;
     [inviteView showInView:self.window animated:YES];
     [inviteView release];
 }</code></pre>
+
+Note that in above example, it is passing self as the delegate for receiving message from <code>inviteView</code>.  The assigned delegate can receive two types of messages: <code>invitedCount:count</code> and <code>invitedCancelled</code>.  <code>invitedCount:count</code> message is sent to delegate when app user invited one or more recipients so the host app can keep counter of invitation sent.  The <code>invitedCancelled</code> message is sent to delegate when app user cancelled out of the AGE Invitation UI dialog.  
+
+Below sample code snippet illustrates implementation of the delegate protocol by the host app:
+
+<pre><code>#pragma mark - HKInvite delegates
+- (void)invitedCount:(NSInteger)count;
+{
+    _infoLabel.text = [NSString stringWithFormat:@"You have shared this app with %d friends", count];
+}
+
+- (void)inviteCancelled
+{
+    _infoLabel.text = @"You have cancelled from sharing";
+}
+</code></pre>
+
