@@ -106,7 +106,6 @@ static inline CGFloat lerp(CGFloat a, CGFloat b, CGFloat p)
 
 - (void)dealloc
 {
-    NSLog(@"ODRefreshControl dealloc invoked");
     [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
     [self.scrollView removeObserver:self forKeyPath:@"contentInset"];
     self.scrollView = nil;
