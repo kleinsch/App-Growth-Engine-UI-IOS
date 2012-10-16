@@ -1,3 +1,4 @@
+
 #import <AddressBook/AddressBook.h>
 #import "HKInviteView.h"
 #import "HKInviteViewCell.h"
@@ -23,8 +24,8 @@
 
 #pragma mark - initialization & cleaning up
 - (id)initWithKey:(NSString *)apiKey
-            title:(NSString *)aTitle 
-     sendBtnLabel:(NSString *)sendBtnLabel 
+            title:(NSString *)aTitle
+     sendBtnLabel:(NSString *)sendBtnLabel
 {
     NSLog(@"initWithKey invoked %@", self);
     CGRect rect = [[UIScreen mainScreen] applicationFrame];
@@ -33,20 +34,20 @@
         self.backgroundColor = [UIColor clearColor];
         _title = [aTitle copy];
         
+        // register to receive all AGE notification
         [self registerNotification];
+        // activate AGE
         [HKMDiscoverer activate:[apiKey copy]];
         _firstUse = [[HKMDiscoverer agent]installCode] == nil;
         
-        // start discovering address book
-        //        [MBProgressHUD showHUDAddedTo:self animated:YES];
-        //        [[HKMDiscoverer agent] discover:0];
+        // start discovering address book and request IOS6 address book permission
         [self launchWithPermissionCheck];
         
         float tableViewWidth = rect.size.width - 2 * POPLISTVIEW_SCREENINSET;
         float tableViewHeight = rect.size.height - 2 * POPLISTVIEW_SCREENINSET - POPLISTVIEW_HEADER_HEIGHT - POPLISTVIEW_FOOTER_HEIGHT- RADIUS;
         
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(POPLISTVIEW_SCREENINSET, 
-                                                                   POPLISTVIEW_SCREENINSET + POPLISTVIEW_HEADER_HEIGHT, 
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(POPLISTVIEW_SCREENINSET,
+                                                                   POPLISTVIEW_SCREENINSET + POPLISTVIEW_HEADER_HEIGHT,
                                                                    tableViewWidth,
                                                                    tableViewHeight)];
         _tableView.separatorColor = [UIColor colorWithWhite:0 alpha:.2];
@@ -64,45 +65,15 @@
         float buttonWidth = (tableViewWidth-POPLISTVIEW_BUTTONINSET*2);
         float buttonHeight = POPLISTVIEW_FOOTER_HEIGHT-POPLISTVIEW_BUTTONINSET*2;
         _sendButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [_sendButton addTarget:self 
+        [_sendButton addTarget:self
                         action:@selector(sendInviteAction)
               forControlEvents:UIControlEventTouchUpInside];
         [_sendButton setTitle:[sendBtnLabel copy] forState:UIControlStateNormal];
         _sendButton.frame = CGRectMake(POPLISTVIEW_SCREENINSET+POPLISTVIEW_BUTTONINSET, POPLISTVIEW_SCREENINSET + POPLISTVIEW_HEADER_HEIGHT + tableViewHeight + POPLISTVIEW_BUTTONINSET, buttonWidth, buttonHeight);
         [self addSubview:_sendButton];
     }
-    return self;    
+    return self;
 }
-
-- (void) launchWithPermissionCheck
-{
-    ABAddressBookRef ab = ABAddressBookCreate();
-    if (ABAddressBookRequestAccessWithCompletion != NULL) {
-        ABAddressBookRequestAccessWithCompletion(ab, ^(bool granted, CFErrorRef error) {
-            if (granted) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD showHUDAddedTo:self animated:YES];
-                    [[HKMDiscoverer agent] discover:0];
-                });
-            } else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView* alert = [[UIAlertView alloc] init];
-                    alert.title = ADDRESSBOOK_DENIED_ACCESS_ALERT_TITLE;
-                    alert.message = ADDRESSBOOK_DENIED_ACCESS_ALERT_MSG;
-                    [alert addButtonWithTitle:@"Dismiss"];
-                    alert.cancelButtonIndex = 0;
-                    [alert show];
-                    [alert release];
-                });
-            }
-        });
-    } else {
-        // iOS 5
-        [MBProgressHUD showHUDAddedTo:self animated:YES];
-        [[HKMDiscoverer agent] discover:0];
-    }
-}
-
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
@@ -117,99 +88,10 @@
 
 - (void)dealloc
 {
-    NSLog(@"dealloc invoked");
     [_title release];
     [_tableView release];
     [[NSNotificationCenter defaultCenter] removeObserver: self];
     [super dealloc];
-}
-
-// register for notification of AGE related callback events
-- (void)registerNotification 
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoverCompleted) name:NOTIF_HOOK_DISCOVER_COMPLETE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoverCompleted) name:NOTIF_HOOK_DISCOVER_NO_CHANGE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoverFailed) name:NOTIF_HOOK_DISCOVER_FAILED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryLeadsCompleted) name:NOTIF_HOOK_QUERY_ORDER_COMPLETE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryLeadsFailed) name:NOTIF_HOOK_QUERY_ORDER_FAILED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkError) name:NOTIF_HOOK_NETWORK_ERROR object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendReferralCompleted) name:NOTIF_HOOK_NEW_REFERRAL_COMPLETE object:nil];
-}
-
-- (void) discoverCompleted
-{
-    NSLog(@"discoverCompleted invoked");
-    
-    if (_firstUse) {
-        _aTimer = [NSTimer scheduledTimerWithTimeInterval:FIRST_USE_WAIT_TIME
-                                                   target:self 
-                                                 selector:@selector(timerFired:) 
-                                                 userInfo:nil 
-                                                  repeats:NO];
-    } else {
-        [[HKMDiscoverer agent] queryLeads];
-    }
-}
-
-- (void) discoverFailed {
-    NSLog(@"discoverFailed invoked");
-    [MBProgressHUD hideHUDForView:self animated:YES];
-    [self fadeOut];
-}
-
--(void)timerFired:(NSTimer *) theTimer
-{    
-    NSLog(@"timerFired @ %@", [theTimer fireDate]);
-    BOOL status = [[HKMDiscoverer agent] queryLeads];
-    NSLog(@"timerFired - queryLeads status=%d", status);
-}
-
-- (void) queryLeadsCompleted
-{
-    NSLog(@"queryLeadsCompleted invoked");
-    [_tableView reloadData];
-    [MBProgressHUD hideHUDForView:self animated:YES];
-}
-
-- (void) queryLeadsFailed 
-{
-    NSLog(@"queryLeadsFailed invoked");
-    [MBProgressHUD hideHUDForView:self animated:YES];
-    [self fadeOut];
-}
-
-- (void) sendReferralCompleted
-{
-    NSLog(@"sendReferralCompleted invoked");
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = @"Invitation Sent!";
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [MBProgressHUD hideHUDForView:self animated:YES];
-        // tell the delegate the selection
-        if (self.delegate && [self.delegate respondsToSelector:@selector(leveyPopListViewDidSendCount:)]) {
-            [self.delegate invitedCount:_lastInviteCount];
-        }
-        
-        [self fadeOut];
-    });
-}
-
-- (void) networkError
-{
-    NSLog(@"networkError invoked");
-    [MBProgressHUD hideHUDForView:self animated:YES];
-    
-    UIAlertView* alert = [[UIAlertView alloc] init];
-    alert.title = @"Error";
-    alert.message = @"No data coverage. Please check your settings";
-    [alert addButtonWithTitle:@"Dismiss"];
-    alert.cancelButtonIndex = 0;
-    [alert show];
-    [alert release];
-    
-    [self fadeOut];
 }
 
 #pragma mark - Private Methods
@@ -225,7 +107,6 @@
 }
 - (void)fadeOut
 {
-    NSLog(@"fadeOut invoked");
     [UIView animateWithDuration:.35 animations:^{
         self.transform = CGAffineTransformMakeScale(1.3, 1.3);
         self.alpha = 0.0;
@@ -256,7 +137,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentity = @"PopListViewCell";
+    static NSString *cellIdentity = @"HKINviteViewCell";
     
     HKInviteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
     if (cell ==  nil) {
@@ -278,8 +159,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"didSelectRowAtIndexPath clicked");
     HKMLead *lead = [[HKMDiscoverer agent].leads objectAtIndex:indexPath.row];
     if (lead.selected) {
         lead.selected = NO;
@@ -292,10 +171,8 @@
 #pragma mark - TouchTouchTouch
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"touchesEnded invoked");
     // tell the delegate the cancellation
-    if (self.delegate && [self.delegate respondsToSelector:@selector(leveyPopListViewDidCancel)]) {
-        NSLog(@"leveyPopListViewDidCancel notified");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(inviteCancelled)]) {
         [self.delegate inviteCancelled];
     }
     
@@ -326,13 +203,13 @@
     float width = bgRect.size.width;
     float height = bgRect.size.height;
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, x, y + RADIUS);
-    CGPathAddArcToPoint(path, NULL, x, y, x + RADIUS, y, RADIUS);
-    CGPathAddArcToPoint(path, NULL, x + width, y, x + width, y + RADIUS, RADIUS);
-    CGPathAddArcToPoint(path, NULL, x + width, y + height, x + width - RADIUS, y + height, RADIUS);
-    CGPathAddArcToPoint(path, NULL, x, y + height, x, y + height - RADIUS, RADIUS);
-    CGPathCloseSubpath(path);
-    CGContextAddPath(ctx, path);
+	CGPathMoveToPoint(path, NULL, x, y + RADIUS);
+	CGPathAddArcToPoint(path, NULL, x, y, x + RADIUS, y, RADIUS);
+	CGPathAddArcToPoint(path, NULL, x + width, y, x + width, y + RADIUS, RADIUS);
+	CGPathAddArcToPoint(path, NULL, x + width, y + height, x + width - RADIUS, y + height, RADIUS);
+	CGPathAddArcToPoint(path, NULL, x, y + height, x, y + height - RADIUS, RADIUS);
+	CGPathCloseSubpath(path);
+	CGContextAddPath(ctx, path);
     CGContextFillPath(ctx);
     CGPathRelease(path);
     
@@ -343,8 +220,8 @@
     CGContextFillRect(ctx, separatorRect);
 }
 
+#pragma mark - UI interaction
 - (void)sendInviteAction {
-    NSLog(@"sendInviteAction invoked");
     _lastInviteCount = 0;
     NSMutableArray *phones = [[NSMutableArray arrayWithCapacity:16] retain];
     for (HKMLead *lead in [HKMDiscoverer agent].leads) {
@@ -358,23 +235,124 @@
     } else {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
         hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"Please select a few friends first";
+        hud.labelText = INVITE_SELECT_SOME_FRIENDS_MSG;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [MBProgressHUD hideHUDForView:self animated:YES];
         });
     }
-    
-    
 }
 
-- (void)cancelInviteAction {
-    // tell the delegate the cancellation
-    if (self.delegate && [self.delegate respondsToSelector:@selector(leveyPopListViewDidCancel)]) {
-        [self.delegate inviteCancelled];
+#pragma mark - AGE address book handling functions
+- (void) launchWithPermissionCheck
+{
+    ABAddressBookRef ab = ABAddressBookCreate();
+    if (ABAddressBookRequestAccessWithCompletion != NULL) {
+        ABAddressBookRequestAccessWithCompletion(ab, ^(bool granted, CFErrorRef error) {
+            if (granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD showHUDAddedTo:self animated:YES];
+                    [[HKMDiscoverer agent] discover:0];
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView* alert = [[UIAlertView alloc] init];
+                    alert.title = ADDRESSBOOK_DENIED_ACCESS_ALERT_TITLE;
+                    alert.message = ADDRESSBOOK_DENIED_ACCESS_ALERT_MSG;
+                    [alert addButtonWithTitle:@"Dismiss"];
+                    alert.cancelButtonIndex = 0;
+                    [alert show];
+                    [alert release];
+                });
+            }
+        });
+    } else {
+        // iOS 5
+        [MBProgressHUD showHUDAddedTo:self animated:YES];
+        [[HKMDiscoverer agent] discover:0];
     }
+}
+
+
+// register for notification of AGE related callback events
+- (void)registerNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoverCompleted) name:NOTIF_HOOK_DISCOVER_COMPLETE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoverCompleted) name:NOTIF_HOOK_DISCOVER_NO_CHANGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(discoverFailed) name:NOTIF_HOOK_DISCOVER_FAILED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryLeadsCompleted) name:NOTIF_HOOK_QUERY_ORDER_COMPLETE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryLeadsFailed) name:NOTIF_HOOK_QUERY_ORDER_FAILED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkError) name:NOTIF_HOOK_NETWORK_ERROR object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendReferralCompleted) name:NOTIF_HOOK_NEW_REFERRAL_COMPLETE object:nil];
+}
+
+- (void) discoverCompleted
+{
+    if (_firstUse) {
+        _aTimer = [NSTimer scheduledTimerWithTimeInterval:FIRST_USE_WAIT_TIME
+                                                   target:self
+                                                 selector:@selector(timerFired:)
+                                                 userInfo:nil
+                                                  repeats:NO];
+    } else {
+        [[HKMDiscoverer agent] queryLeads];
+    }
+}
+
+- (void) discoverFailed {
+    [MBProgressHUD hideHUDForView:self animated:YES];
+    [self fadeOut];
+}
+
+-(void)timerFired:(NSTimer *) theTimer
+{
+    NSLog(@"timerFired @ %@", [theTimer fireDate]);
+    BOOL status = [[HKMDiscoverer agent] queryLeads];
+    NSLog(@"timerFired - queryLeads status=%d", status);
+}
+
+- (void) queryLeadsCompleted
+{
+    [_tableView reloadData];
+    [MBProgressHUD hideHUDForView:self animated:YES];
+}
+
+- (void) queryLeadsFailed
+{
+    [MBProgressHUD hideHUDForView:self animated:YES];
+    [self fadeOut];
+}
+
+- (void) sendReferralCompleted
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"Invitation Sent!";
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [MBProgressHUD hideHUDForView:self animated:YES];
+        // tell the delegate the selection
+        if (self.delegate && [self.delegate respondsToSelector:@selector(invitedCount:)]) {
+            [self.delegate invitedCount:_lastInviteCount];
+        }
+        
+        [self fadeOut];
+    });
+}
+
+- (void) networkError
+{
+    NSLog(@"networkError invoked");
+    [MBProgressHUD hideHUDForView:self animated:YES];
     
-    // dismiss self
+    UIAlertView* alert = [[UIAlertView alloc] init];
+	alert.title = NO_NETWORK_COVERAGE_ERROR_ALERT_TITLE;
+	alert.message = NO_NETWORK_COVERAGE_ERROR_ALERT_MSG;
+	[alert addButtonWithTitle:@"OK"];
+	alert.cancelButtonIndex = 0;
+	[alert show];
+	[alert release];
+    
     [self fadeOut];
 }
 
