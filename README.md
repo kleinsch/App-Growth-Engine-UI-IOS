@@ -17,7 +17,9 @@ Select one or more entries from the suggested and click on the <b>Send</b> butto
 The message is completely customizable by you, and it can be further personalized to include the sender and app name.
 
 # Integration Setup
-Now that you have a good understanding of the AGE Invitation UI, you are ready to integrate AGE Invitation UI into your app.  The first step is to copy all the necessary files into your Xcode project.  AGE Invitation UI requires linking with following system libraries:
+Now that you have a good understanding of the AGE Invitation UI, you are ready to integrate AGE Invitation UI into your app.  The first step is to <a href="http://www.hookmobile.com"  target="_blank">signup</a> for an App Key for your app at Hook Mobile developer portal. This App Key will be used in the next section when you start doing your integration.  
+
+The next step is to copy all the necessary files into your Xcode project.  AGE Invitation UI requires linking with following system libraries:
 
 * AddressBook.Framework
 * MessageUI.Framework
