@@ -1,7 +1,7 @@
 
-#import "HKInviteViewCell.h"
+#import "HKMInviteViewCell.h"
 
-@implementation HKInviteViewCell
+@implementation HKMInviteViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

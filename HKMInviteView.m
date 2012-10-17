@@ -1,7 +1,7 @@
 
 #import <AddressBook/AddressBook.h>
-#import "HKInviteView.h"
-#import "HKInviteViewCell.h"
+#import "HKMInviteView.h"
+#import "HKMInviteViewCell.h"
 #import "HKMDiscoverer.h"
 #import "HKMLead.h"
 #import "MBProgressHUD.h"
@@ -14,12 +14,12 @@
 #define RADIUS 5.
 #define FIRST_USE_WAIT_TIME 5.
 
-@interface HKInviteView (private)
+@interface HKMInviteView (private)
 - (void)fadeIn;
 - (void)fadeOut;
 @end
 
-@implementation HKInviteView
+@implementation HKMInviteView
 @synthesize delegate;
 
 #pragma mark - initialization & cleaning up
@@ -139,9 +139,9 @@
 {
     static NSString *cellIdentity = @"HKINviteViewCell";
     
-    HKInviteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
+    HKMInviteViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
     if (cell ==  nil) {
-        cell = [[[HKInviteViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity] autorelease];
+        cell = [[[HKMInviteViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentity] autorelease];
     }
     
     HKMLead *lead = (HKMLead *)[[HKMDiscoverer agent].leads objectAtIndex:indexPath.row];

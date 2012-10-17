@@ -4,8 +4,8 @@
 #define NO_NETWORK_COVERAGE_ERROR_ALERT_TITLE @"Sorry!"
 #define NO_NETWORK_COVERAGE_ERROR_ALERT_MSG @"No data coverage. Please check your settings"
 
-@protocol HKInviteDelegate;
-@interface HKInviteView : UIView <UITableViewDataSource, UITableViewDelegate>
+@protocol HKMInviteDelegate;
+@interface HKMInviteView : UIView <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
     UIButton *_sendButton;
@@ -15,7 +15,7 @@
     int _lastInviteCount;
 }
 
-@property (nonatomic, assign) id<HKInviteDelegate> delegate;
+@property (nonatomic, assign) id<HKMInviteDelegate> delegate;
 
 - (id)initWithKey: (NSString *)apiKey title:(NSString *)aTitle sendBtnLabel:(NSString *)sendBtnLabel;
 - (void) launchWithPermissionCheck;
@@ -24,7 +24,7 @@
 
 @end
 
-@protocol HKInviteDelegate <NSObject>
+@protocol HKMInviteDelegate <NSObject>
 - (void)invitedCount:(NSInteger)count;
 - (void)inviteCancelled;
 @end

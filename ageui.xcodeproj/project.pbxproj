@@ -13,8 +13,8 @@
 		1F008C1D16274710006BFCF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F008C1B16274710006BFCF1 /* InfoPlist.strings */; };
 		1F008C1F16274710006BFCF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C1E16274710006BFCF1 /* main.m */; };
 		1F008C2316274710006BFCF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2216274710006BFCF1 /* AppDelegate.m */; };
-		1F008C4816274751006BFCF1 /* HKInviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2A16274751006BFCF1 /* HKInviteView.m */; };
-		1F008C4916274751006BFCF1 /* HKInviteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2C16274751006BFCF1 /* HKInviteViewCell.m */; };
+		1F008C4816274751006BFCF1 /* HKMInviteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2A16274751006BFCF1 /* HKMInviteView.m */; };
+		1F008C4916274751006BFCF1 /* HKMInviteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2C16274751006BFCF1 /* HKMInviteViewCell.m */; };
 		1F008C4A16274751006BFCF1 /* HKMDiscoverer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C2E16274751006BFCF1 /* HKMDiscoverer.m */; };
 		1F008C4B16274751006BFCF1 /* HKMLead.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3116274751006BFCF1 /* HKMLead.m */; };
 		1F008C4C16274751006BFCF1 /* HKMOpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3316274751006BFCF1 /* HKMOpenUDID.m */; };
@@ -45,10 +45,10 @@
 		1F008C2016274710006BFCF1 /* ageui-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ageui-Prefix.pch"; sourceTree = "<group>"; };
 		1F008C2116274710006BFCF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1F008C2216274710006BFCF1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1F008C2916274751006BFCF1 /* HKInviteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKInviteView.h; path = ../HKInviteView.h; sourceTree = "<group>"; };
-		1F008C2A16274751006BFCF1 /* HKInviteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKInviteView.m; path = ../HKInviteView.m; sourceTree = "<group>"; };
-		1F008C2B16274751006BFCF1 /* HKInviteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKInviteViewCell.h; path = ../HKInviteViewCell.h; sourceTree = "<group>"; };
-		1F008C2C16274751006BFCF1 /* HKInviteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKInviteViewCell.m; path = ../HKInviteViewCell.m; sourceTree = "<group>"; };
+		1F008C2916274751006BFCF1 /* HKMInviteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKMInviteView.h; path = ../HKMInviteView.h; sourceTree = "<group>"; };
+		1F008C2A16274751006BFCF1 /* HKMInviteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKMInviteView.m; path = ../HKMInviteView.m; sourceTree = "<group>"; };
+		1F008C2B16274751006BFCF1 /* HKMInviteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HKMInviteViewCell.h; path = ../HKMInviteViewCell.h; sourceTree = "<group>"; };
+		1F008C2C16274751006BFCF1 /* HKMInviteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HKMInviteViewCell.m; path = ../HKMInviteViewCell.m; sourceTree = "<group>"; };
 		1F008C2D16274751006BFCF1 /* HKMDiscoverer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMDiscoverer.h; sourceTree = "<group>"; };
 		1F008C2E16274751006BFCF1 /* HKMDiscoverer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMDiscoverer.m; sourceTree = "<group>"; };
 		1F008C2F16274751006BFCF1 /* HKMJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMJSON.h; sourceTree = "<group>"; };
@@ -136,10 +136,10 @@
 				1FCA1332162DD29100BE35AC /* contact.png */,
 				1F008C2116274710006BFCF1 /* AppDelegate.h */,
 				1F008C2216274710006BFCF1 /* AppDelegate.m */,
-				1F008C2916274751006BFCF1 /* HKInviteView.h */,
-				1F008C2A16274751006BFCF1 /* HKInviteView.m */,
-				1F008C2B16274751006BFCF1 /* HKInviteViewCell.h */,
-				1F008C2C16274751006BFCF1 /* HKInviteViewCell.m */,
+				1F008C2916274751006BFCF1 /* HKMInviteView.h */,
+				1F008C2A16274751006BFCF1 /* HKMInviteView.m */,
+				1F008C2B16274751006BFCF1 /* HKMInviteViewCell.h */,
+				1F008C2C16274751006BFCF1 /* HKMInviteViewCell.m */,
 				1F008C4416274751006BFCF1 /* ODRefreshControl.h */,
 				1F008C4516274751006BFCF1 /* ODRefreshControl.m */,
 				1F008C3E16274751006BFCF1 /* MBProgressHUD.h */,
@@ -254,8 +254,8 @@
 			files = (
 				1F008C1F16274710006BFCF1 /* main.m in Sources */,
 				1F008C2316274710006BFCF1 /* AppDelegate.m in Sources */,
-				1F008C4816274751006BFCF1 /* HKInviteView.m in Sources */,
-				1F008C4916274751006BFCF1 /* HKInviteViewCell.m in Sources */,
+				1F008C4816274751006BFCF1 /* HKMInviteView.m in Sources */,
+				1F008C4916274751006BFCF1 /* HKMInviteViewCell.m in Sources */,
 				1F008C4A16274751006BFCF1 /* HKMDiscoverer.m in Sources */,
 				1F008C4B16274751006BFCF1 /* HKMLead.m in Sources */,
 				1F008C4C16274751006BFCF1 /* HKMOpenUDID.m in Sources */,

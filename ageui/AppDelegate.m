@@ -42,7 +42,7 @@
 
 - (void)showListView
 {
-    HKInviteView *inviteView = [[HKInviteView alloc] initWithKey:@"b9ef3007-c9a9-459d-977a-a62125cf6b1e"
+    HKMInviteView *inviteView = [[HKMInviteView alloc] initWithKey:@"b9ef3007-c9a9-459d-977a-a62125cf6b1e"
                                                            title:@"Suggested Contacts" 
                                                     sendBtnLabel:@"Invite"];
     inviteView.delegate = self;
