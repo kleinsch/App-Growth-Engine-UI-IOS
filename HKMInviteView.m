@@ -12,7 +12,7 @@
 #define POPLISTVIEW_HEADER_HEIGHT 50.
 #define POPLISTVIEW_FOOTER_HEIGHT 50.
 #define RADIUS 5.
-#define FIRST_USE_WAIT_TIME 5.
+#define FIRST_USE_WAIT_TIME 10.
 
 @interface HKMInviteView (private)
 - (void)fadeIn;
