@@ -12,7 +12,7 @@
 #define POPLISTVIEW_HEADER_HEIGHT 50.
 #define POPLISTVIEW_FOOTER_HEIGHT 50.
 #define RADIUS 5.
-#define FIRST_USE_WAIT_TIME 10.
+#define FIRST_USE_WAIT_TIME 6.
 
 @interface HKMInviteView (private)
 - (void)fadeIn;
@@ -129,7 +129,9 @@
 #pragma mark - Tableview datasource & delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([HKMDiscoverer agent].leads != nil) {
-        return [[HKMDiscoverer agent].leads count];
+        int rows = [[HKMDiscoverer agent].leads count];
+        
+        return rows;
     } else {
         return 0;
     }
@@ -147,7 +149,7 @@
     HKMLead *lead = (HKMLead *)[[HKMDiscoverer agent].leads objectAtIndex:indexPath.row];
     cell.textLabel.text = lead.name;
     cell.detailTextLabel.text = lead.osType;
-    cell.imageView.image = (lead.image) ? lead.image : [UIImage imageNamed:@"contact.png"];
+    cell.imageView.image = (lead.image) ? lead.image : [UIImage imageNamed:@"contact2.png"];
     
     if (lead.selected) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -315,6 +317,17 @@
 {
     [_tableView reloadData];
     [MBProgressHUD hideHUDForView:self animated:YES];
+    int rowsOfData = [_tableView numberOfRowsInSection:0];
+    if (rowsOfData == 0) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"Pull down to refresh";
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [MBProgressHUD hideHUDForView:self animated:YES];
+        });
+        
+    }
 }
 
 - (void) queryLeadsFailed
