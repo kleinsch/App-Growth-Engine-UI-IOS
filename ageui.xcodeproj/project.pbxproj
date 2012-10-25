@@ -31,7 +31,7 @@
 		1F008C591627479F006BFCF1 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C581627479F006BFCF1 /* AddressBook.framework */; };
 		1F008C5B162747AF006BFCF1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C5A162747AF006BFCF1 /* MessageUI.framework */; };
 		1F008C5D162747CD006BFCF1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C5C162747CD006BFCF1 /* QuartzCore.framework */; };
-		1FCA1333162DD29100BE35AC /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCA1332162DD29100BE35AC /* contact.png */; };
+		1F865C681639923A00E648D6 /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F865C671639923A00E648D6 /* contact.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +79,7 @@
 		1F008C581627479F006BFCF1 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		1F008C5A162747AF006BFCF1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1F008C5C162747CD006BFCF1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		1FCA1332162DD29100BE35AC /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
+		1F865C671639923A00E648D6 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 		1F008C1816274710006BFCF1 /* ageui */ = {
 			isa = PBXGroup;
 			children = (
-				1FCA1332162DD29100BE35AC /* contact.png */,
+				1F865C671639923A00E648D6 /* contact.png */,
 				1F008C2116274710006BFCF1 /* AppDelegate.h */,
 				1F008C2216274710006BFCF1 /* AppDelegate.m */,
 				1F008C2916274751006BFCF1 /* HKMInviteView.h */,
@@ -241,7 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F008C1D16274710006BFCF1 /* InfoPlist.strings in Resources */,
-				1FCA1333162DD29100BE35AC /* contact.png in Resources */,
+				1F865C681639923A00E648D6 /* contact.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
