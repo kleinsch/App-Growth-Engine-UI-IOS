@@ -7,13 +7,6 @@
 #import "MBProgressHUD.h"
 #import "ODRefreshControl.h"
 
-#define POPLISTVIEW_SCREENINSET 40.
-#define POPLISTVIEW_BUTTONINSET 10.
-#define POPLISTVIEW_HEADER_HEIGHT 50.
-#define POPLISTVIEW_FOOTER_HEIGHT 50.
-#define RADIUS 5.
-#define FIRST_USE_WAIT_TIME 6.
-
 @interface HKMInviteView (private)
 - (void)fadeIn;
 - (void)fadeOut;
