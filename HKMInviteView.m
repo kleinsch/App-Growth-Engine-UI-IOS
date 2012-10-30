@@ -142,7 +142,7 @@
     HKMLead *lead = (HKMLead *)[[HKMDiscoverer agent].leads objectAtIndex:indexPath.row];
     cell.textLabel.text = lead.name;
     cell.detailTextLabel.text = lead.osType;
-    cell.imageView.image = (lead.image) ? lead.image : [UIImage imageNamed:@"contact2.png"];
+    cell.imageView.image = (lead.image) ? lead.image : [UIImage imageNamed:@"contact.png"];
     
     if (lead.selected) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
