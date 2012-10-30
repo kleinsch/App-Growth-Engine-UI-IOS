@@ -24,14 +24,12 @@
 		1F008C5016274751006BFCF1 /* HKMSBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3B16274751006BFCF1 /* HKMSBJsonParser.m */; };
 		1F008C5116274751006BFCF1 /* HKMSBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3D16274751006BFCF1 /* HKMSBJsonWriter.m */; };
 		1F008C5216274751006BFCF1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C3F16274751006BFCF1 /* MBProgressHUD.m */; };
-		1F008C5316274751006BFCF1 /* NSObject+HKMSBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4116274751006BFCF1 /* NSObject+HKMSBJSON.m */; };
-		1F008C5416274751006BFCF1 /* NSString+HKMSBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4316274751006BFCF1 /* NSString+HKMSBJSON.m */; };
 		1F008C5516274751006BFCF1 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4516274751006BFCF1 /* ODRefreshControl.m */; };
 		1F008C5616274751006BFCF1 /* UIDevice-HKMHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F008C4716274751006BFCF1 /* UIDevice-HKMHardware.m */; };
 		1F008C591627479F006BFCF1 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C581627479F006BFCF1 /* AddressBook.framework */; };
 		1F008C5B162747AF006BFCF1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C5A162747AF006BFCF1 /* MessageUI.framework */; };
 		1F008C5D162747CD006BFCF1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F008C5C162747CD006BFCF1 /* QuartzCore.framework */; };
-		1F865C681639923A00E648D6 /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F865C671639923A00E648D6 /* contact.png */; };
+		1FACB610164052F300EF29DF /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FACB60F164052F300EF29DF /* contact.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,10 +66,6 @@
 		1F008C3D16274751006BFCF1 /* HKMSBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMSBJsonWriter.m; sourceTree = "<group>"; };
 		1F008C3E16274751006BFCF1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../MBProgressHUD.h; sourceTree = "<group>"; };
 		1F008C3F16274751006BFCF1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../MBProgressHUD.m; sourceTree = "<group>"; };
-		1F008C4016274751006BFCF1 /* NSObject+HKMSBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HKMSBJSON.h"; sourceTree = "<group>"; };
-		1F008C4116274751006BFCF1 /* NSObject+HKMSBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HKMSBJSON.m"; sourceTree = "<group>"; };
-		1F008C4216274751006BFCF1 /* NSString+HKMSBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HKMSBJSON.h"; sourceTree = "<group>"; };
-		1F008C4316274751006BFCF1 /* NSString+HKMSBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HKMSBJSON.m"; sourceTree = "<group>"; };
 		1F008C4416274751006BFCF1 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ODRefreshControl.h; path = ../ODRefreshControl.h; sourceTree = "<group>"; };
 		1F008C4516274751006BFCF1 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ODRefreshControl.m; path = ../ODRefreshControl.m; sourceTree = "<group>"; };
 		1F008C4616274751006BFCF1 /* UIDevice-HKMHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-HKMHardware.h"; sourceTree = "<group>"; };
@@ -79,7 +73,7 @@
 		1F008C581627479F006BFCF1 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		1F008C5A162747AF006BFCF1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1F008C5C162747CD006BFCF1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		1F865C671639923A00E648D6 /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
+		1FACB60F164052F300EF29DF /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contact.png; path = ../contact.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +127,7 @@
 		1F008C1816274710006BFCF1 /* ageui */ = {
 			isa = PBXGroup;
 			children = (
-				1F865C671639923A00E648D6 /* contact.png */,
+				1FACB60F164052F300EF29DF /* contact.png */,
 				1F008C2116274710006BFCF1 /* AppDelegate.h */,
 				1F008C2216274710006BFCF1 /* AppDelegate.m */,
 				1F008C2916274751006BFCF1 /* HKMInviteView.h */,
@@ -180,10 +174,6 @@
 				1F008C3B16274751006BFCF1 /* HKMSBJsonParser.m */,
 				1F008C3C16274751006BFCF1 /* HKMSBJsonWriter.h */,
 				1F008C3D16274751006BFCF1 /* HKMSBJsonWriter.m */,
-				1F008C4016274751006BFCF1 /* NSObject+HKMSBJSON.h */,
-				1F008C4116274751006BFCF1 /* NSObject+HKMSBJSON.m */,
-				1F008C4216274751006BFCF1 /* NSString+HKMSBJSON.h */,
-				1F008C4316274751006BFCF1 /* NSString+HKMSBJSON.m */,
 				1F008C4616274751006BFCF1 /* UIDevice-HKMHardware.h */,
 				1F008C4716274751006BFCF1 /* UIDevice-HKMHardware.m */,
 			);
@@ -241,7 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F008C1D16274710006BFCF1 /* InfoPlist.strings in Resources */,
-				1F865C681639923A00E648D6 /* contact.png in Resources */,
+				1FACB610164052F300EF29DF /* contact.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +255,6 @@
 				1F008C5016274751006BFCF1 /* HKMSBJsonParser.m in Sources */,
 				1F008C5116274751006BFCF1 /* HKMSBJsonWriter.m in Sources */,
 				1F008C5216274751006BFCF1 /* MBProgressHUD.m in Sources */,
-				1F008C5316274751006BFCF1 /* NSObject+HKMSBJSON.m in Sources */,
-				1F008C5416274751006BFCF1 /* NSString+HKMSBJSON.m in Sources */,
 				1F008C5516274751006BFCF1 /* ODRefreshControl.m in Sources */,
 				1F008C5616274751006BFCF1 /* UIDevice-HKMHardware.m in Sources */,
 			);
