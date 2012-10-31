@@ -24,7 +24,7 @@
 
 @property (nonatomic, assign) id<HKMInviteDelegate> delegate;
 
-- (id)initWithKey: (NSString *)apiKey title:(NSString *)aTitle sendBtnLabel:(NSString *)sendBtnLabel;
+- (id)initWithKey: (NSString *)apiKey title:(NSString *)aTitle sendBtnLabel:(NSString *)sendBtnLabel view:(UIView*)view;
 - (void) launchWithPermissionCheck;
 - (void)showInView:(UIView *)aView animated:(BOOL)animated;
 - (void)registerNotification;

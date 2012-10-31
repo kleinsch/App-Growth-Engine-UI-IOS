@@ -44,7 +44,8 @@
 {
     HKMInviteView *inviteView = [[HKMInviteView alloc] initWithKey:@"b9ef3007-c9a9-459d-977a-a62125cf6b1e"
                                                            title:@"Suggested Contacts" 
-                                                    sendBtnLabel:@"Invite"];
+                                                    sendBtnLabel:@"Invite"
+															  view:self.window];
     inviteView.delegate = self;
     [inviteView showInView:self.window animated:YES];
     [inviteView release];

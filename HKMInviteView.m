@@ -19,9 +19,10 @@
 - (id)initWithKey:(NSString *)apiKey
             title:(NSString *)aTitle
      sendBtnLabel:(NSString *)sendBtnLabel
+			 view:(UIView*)view
 {
     NSLog(@"initWithKey invoked %@", self);
-    CGRect rect = [[UIScreen mainScreen] applicationFrame];
+    CGRect rect = view.bounds;
     if (self = [super initWithFrame:rect])
     {
         self.backgroundColor = [UIColor clearColor];
